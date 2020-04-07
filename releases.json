@@ -1,18 +1,10 @@
 [
   {
     "version": "1.0.2",
-    "downloadUrl": "https://github.com/leowebguy/craft-currency-converter/archive/master.zip",
+    "downloadUrl": "https://github.com/leowebguy/craft-currency-converter/archive/v1.0.2.zip",
     "date": "2020-04-01T20:11:11.132Z",
     "notes": [
       "[Changed] API provider to rapidapi.com"
-    ]
-  },
-  {
-    "version": "1.0.1",
-    "downloadUrl": "https://github.com/leowebguy/craft-currency-converter/archive/master.zip",
-    "date": "2020-03-11T20:11:11.132Z",
-    "notes": [
-      "[Added] Cache settings"
     ]
   }
 ]
