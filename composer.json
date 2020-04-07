@@ -1,0 +1,39 @@
+{
+    "name": "leowebguy/craft-currency-converter",
+    "description": "Craft 3 plugin that converts currency using API & local storage",
+    "version": "1.0.3",
+    "type": "craft-plugin",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Leo",
+            "homepage": "https://github.com/leowebguy"
+        }
+    ],
+    "require": {
+        "craftcms/cms": "^3.1.0",
+        "guzzlehttp/guzzle": "6.5.2"
+    },
+    "require-dev": {
+        "overtrue/phplint": "^1.2"
+    },
+    "autoload": {
+        "psr-4": {
+            "leowebguy\\currencyconverter\\": "src/"
+        }
+    },
+    "extra": {
+        "name": "Currency Converter",
+        "handle": "currency-converter",
+        "hasCpSection": false,
+        "hasCpSettings": true,
+        "changelogUrl": "https://raw.githubusercontent.com/leowebguy/craft-currency-converter/master/CHANGELOG.md",
+        "components": {
+            "currencyConverterService": "leowebguy\\currencyconverter\\services\\CurrencyConverterService"
+        },
+        "class": "leowebguy\\currencyconverter\\CurrencyConverter"
+    },
+    "scripts": {
+        "lint": "./vendor/bin/phplint . --verbose --exclude=vendor --no-configuration"
+    }
+}

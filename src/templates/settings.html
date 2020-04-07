@@ -1,0 +1,34 @@
+{% import '_includes/forms' as forms %}
+
+{{ forms.textField({
+    first: true,
+    name: 'accessKey',
+    label: "Access Key",
+    instructions: "Enter your access key from https://rapidapi.com/natkapral/api/currency-converter5 in this field"|t,
+    required: true,
+    value: settings.accessKey,
+    size: 64
+}) }}
+
+{{ forms.selectField({
+    first: true,
+    name: "cacheTime",
+    label: "Cache Time",
+    instructions: "Select how many hours the plugin should cache the currency rate"|t,
+    options: {
+        1: "1 hour",
+        3: "3 hours",
+        6: "6 hours",
+        12: "12 hours",
+        24: "24 hours"
+    },
+    value: settings.cacheTime
+}) }}
+
+{# {{ forms.lightswitchField({
+    first: true,
+    name: 'https',
+    label: "Use HTTPS",
+    instructions: "Whether API requests should be made using HTTPS instead of HTTP"|t,
+    on: settings.https
+}) }} #}
