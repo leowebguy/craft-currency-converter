@@ -1,9 +1,9 @@
 <?php
-namespace leowebguy\currencyconverter;
+namespace kerns\craftforex;
 
-use leowebguy\currencyconverter\models\CurrencyConverterModel;
-use leowebguy\currencyconverter\services\CurrencyConverterService;
-use leowebguy\currencyconverter\variables\CurrencyConverterVariable;
+use kerns\craftforex\models\CraftForexModel;
+use kerns\craftforex\services\CraftForexService;
+use kerns\craftforex\variables\CraftForexVariable;
 
 use Craft;
 use craft\base\Plugin;
@@ -12,10 +12,10 @@ use craft\web\twig\variables\CraftVariable;
 use yii\base\Event;
 
 /**
- * Class CurrencyConverter
- * @property  CurrencyConverterService $currencyConverterService
+ * Class CraftForex
+ * @property  CraftForexService $craftForexService
  */
-class CurrencyConverter extends Plugin
+class CraftForex extends Plugin
 {
     public static $plugin;
 
@@ -30,13 +30,13 @@ class CurrencyConverter extends Plugin
             function (Event $event) {
                 /** @var CraftVariable $variable */
                 $variable = $event->sender;
-                $variable->set('currency', CurrencyConverterVariable::class);
+                $variable->set('currency', CraftForexVariable::class);
             }
         );
 
         Craft::info(
             Craft::t(
-                'currency-converter',
+                'craft-forex',
                 '{name} plugin loaded',
                 [ 'name' => $this->name ]
             ),
@@ -47,12 +47,12 @@ class CurrencyConverter extends Plugin
 
     protected function createSettingsModel()
     {
-        return new CurrencyConverterModel();
+        return new CraftForexModel();
     }
 
     protected function settingsHtml()
     {
-        return Craft::$app->getView()->renderTemplate('currency-converter/settings', [
+        return Craft::$app->getView()->renderTemplate('craft-forex/settings', [
             'settings' => $this->getSettings()
         ]);
     }
