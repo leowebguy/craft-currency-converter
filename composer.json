@@ -1,13 +1,17 @@
 {
-    "name": "leowebguy/craft-currency-converter",
-    "description": "Craft 3 plugin that converts currency using API & local storage",
-    "version": "1.0.2",
+    "name": "kerns/craft-forex",
+    "description": "Craft 3 plugin that converts currency using API & local storage, based on @leowebguy's Currency Converter",
+    "version": "1",
     "type": "craft-plugin",
     "license": "MIT",
     "authors": [
         {
             "name": "Leo",
             "homepage": "https://github.com/leowebguy"
+        }
+        {
+            "name": "kerns",
+            "homepage": "https://twitter.co/kerns"
         }
     ],
     "require": {
@@ -19,19 +23,19 @@
     },
     "autoload": {
         "psr-4": {
-            "leowebguy\\currencyconverter\\": "src/"
+            "kerns\\craftforex\\": "src/"
         }
     },
     "extra": {
-        "name": "Currency Converter",
-        "handle": "currency-converter",
+        "name": "Craft Forex",
+        "handle": "craft-forex",
         "hasCpSection": false,
         "hasCpSettings": true,
-        "changelogUrl": "https://raw.githubusercontent.com/leowebguy/craft-currency-converter/master/CHANGELOG.md",
+        "changelogUrl": "https://raw.githubusercontent.com/kerns/craft-forex/master/CHANGELOG.md",
         "components": {
-            "currencyConverterService": "leowebguy\\currencyconverter\\services\\CurrencyConverterService"
+            "craftForexService": "kerns\\craftforex\\services\\CraftForexService"
         },
-        "class": "leowebguy\\currencyconverter\\CurrencyConverter"
+        "class": "kerns\\craftforex\\CraftForex"
     },
     "scripts": {
         "lint": "./vendor/bin/phplint . --verbose --exclude=vendor --no-configuration"
