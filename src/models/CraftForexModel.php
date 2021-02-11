@@ -1,12 +1,12 @@
 <?php
-namespace leowebguy\currencyconverter\models;
+namespace kerns\craftforex\models;
 
 use craft\base\Model;
 
 /**
- * CurrencyConverterModel
+ * CraftForexModel
  */
-class CurrencyConverterModel extends Model
+class CraftForexModel extends Model
 {
     public $accessKey = '';
     public $cacheTime = 6;
