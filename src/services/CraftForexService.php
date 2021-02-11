@@ -1,5 +1,5 @@
 <?php
-namespace leowebguy\currencyconverter\services;
+namespace kerns\craftforex\services;
 
 use GuzzleHttp\Client;
 
@@ -7,9 +7,9 @@ use Craft;
 use craft\base\Component;
 
 /**
- * Class CurrencyConverterService
+ * Class CraftForexService
  */
-class CurrencyConverterService extends Component
+class CraftForexService extends Component
 {
     public function getConversion($from = 'EUR', $to = 'USD', $amount = 1)
     {
@@ -22,7 +22,7 @@ class CurrencyConverterService extends Component
             mkdir($path);
         }
 
-        $settings = Craft::$app->plugins->getPlugin('currency-converter')->getSettings();
+        $settings = Craft::$app->plugins->getPlugin('craft-forex')->getSettings();
 
         if (file_exists($cache) && filemtime($cache) > time() - (60 * 60 * ((int) $settings['cacheTime']))) {
             return $amount * file_get_contents($cache);
