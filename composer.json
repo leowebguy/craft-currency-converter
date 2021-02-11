@@ -1,7 +1,7 @@
 {
     "name": "kerns/craft-forex",
     "description": "Craft 3 plugin that converts currency using API & local storage, based on @leowebguy's Currency Converter",
-    "version": "1",
+    "version": "1.0.0",
     "type": "craft-plugin",
     "license": "MIT",
     "authors": [
