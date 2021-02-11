@@ -1,6 +1,6 @@
-# Currency Converter plugin for Craft 3
+# Craft Forex
 
-Craft 3 plugin that converts currency using API & local storage 
+Craft 3 plugin that converts currency using Rapid API + local storage. Based on Currency Converter by @leowebguy.
 
 ![icon](resources/icon.svg)
 
@@ -19,14 +19,14 @@ cd /path/to/project
 Then tell Composer to load the plugin:
 
 ```bash
-composer require leowebguy/craft-currency-converter
+composer require kerns/craft-forex
 ```
 
-In the Control Panel, go to Settings → Plugins and click the “Install” button for Currency Converter.
+In the Control Panel, go to Settings → Plugins and click the “Install” button for Craft Forex.
 
 Go to [rapidapi.com/natkapral/api/currency-converter5](https://rapidapi.com/natkapral/api/currency-converter5/) → Get your Free API Key
 
-In the Control Panel, go to Settings → Currency Converter and save your API Key
+In the Control Panel, go to Settings → Craft Forex and save your API Key
 
 ![screenshot1](resources/screenshot1.jpg)
 
@@ -35,8 +35,6 @@ In the Control Panel, go to Settings → Currency Converter and save your API Ke
 ---
 
 ### Usage
-
-The plugin exposes a Currency Converter's methods:
 
 ```twig
 {%  set amount = craft.entries.section('my-section').one().numberfield %}
