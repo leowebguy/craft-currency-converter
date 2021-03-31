@@ -1,4 +1,8 @@
 <?php
+/*
+ * Currency Converter | Craft 3 Plugin
+ */
+
 namespace leowebguy\currencyconverter\services;
 
 use GuzzleHttp\Client;
@@ -7,10 +11,18 @@ use Craft;
 use craft\base\Component;
 
 /**
- * Class CurrencyConverterService
+ * CurrencyConverterService
  */
 class CurrencyConverterService extends Component
 {
+    /**
+     * getConversion
+     *
+     * @param  string $from
+     * @param  string $to
+     * @param  float $amount
+     * @return mixed
+     */
     public function getConversion($from = 'EUR', $to = 'USD', $amount = 1)
     {
         $key = $from.'_'.$to;
@@ -27,12 +39,6 @@ class CurrencyConverterService extends Component
         if (file_exists($cache) && filemtime($cache) > time() - (60 * 60 * ((int) $settings['cacheTime']))) {
             return $amount * file_get_contents($cache);
         }
-
-//        $client = new Client([
-//            'base_uri' => 'http'.($settings['https'] ? 's' : '').'://free.currconv.com/api/v7/convert?q='.$key.'&compact=ultra&apiKey='.$settings['accessKey'],
-//            'timeout'  => 2.0
-//        ]);
-//        $response = $client->request('GET');
 
         $client = new Client();
 

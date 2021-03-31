@@ -1,4 +1,8 @@
 <?php
+/*
+ * Currency Converter | Craft 3 Plugin
+ */
+
 namespace leowebguy\currencyconverter;
 
 use leowebguy\currencyconverter\models\CurrencyConverterModel;
