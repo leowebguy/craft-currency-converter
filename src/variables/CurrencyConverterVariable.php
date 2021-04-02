@@ -8,16 +8,17 @@ namespace leowebguy\currencyconverter\variables;
 use leowebguy\currencyconverter\CurrencyConverter;
 
 /**
- * CurrencyConverterVariable
+ * CurrencyConverterVariable.
  */
 class CurrencyConverterVariable
 {
     /**
-     * conversion
+     * conversion.
      *
-     * @param  string $from
-     * @param  string $to
-     * @param  float $amount
+     * @param string $from
+     * @param string $to
+     * @param float  $amount
+     *
      * @return mixed
      */
     public function conversion($from = 'EUR', $to = 'USD', $amount = 1)

@@ -5,22 +5,22 @@
 
 namespace leowebguy\currencyconverter\services;
 
-use GuzzleHttp\Client;
-
 use Craft;
 use craft\base\Component;
+use GuzzleHttp\Client;
 
 /**
- * CurrencyConverterService
+ * CurrencyConverterService.
  */
 class CurrencyConverterService extends Component
 {
     /**
-     * getConversion
+     * getConversion.
      *
-     * @param  string $from
-     * @param  string $to
-     * @param  float $amount
+     * @param string $from
+     * @param string $to
+     * @param float  $amount
+     *
      * @return mixed
      */
     public function getConversion($from = 'EUR', $to = 'USD', $amount = 1)
@@ -47,27 +47,23 @@ class CurrencyConverterService extends Component
                 'format' => 'json',
                 'from' => $from,
                 'to' => $to,
-                'amount' => '1'
+                'amount' => '1',
             ],
             'headers' => [
                 'x-rapidapi-host' => 'currency-converter5.p.rapidapi.com',
-                'x-rapidapi-key' => $settings['accessKey']
-            ]
+                'x-rapidapi-key' => $settings['accessKey'],
+            ],
         ]);
 
         $responseBody = json_decode(trim($response->getBody()));
 
-        if ($responseBody->status == 'success') {
-
+        if ('success' == $responseBody->status) {
             $rate = $responseBody->rates->$to->rate;
             file_put_contents($cache, $rate);
 
             return $amount * $rate;
-
         } else {
-
             return false;
-
         }
     }
 }

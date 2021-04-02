@@ -11,11 +11,10 @@
         }
     ],
     "require": {
-        "craftcms/cms": "^3.1.0",
         "guzzlehttp/guzzle": "^7.2.0"
     },
     "require-dev": {
-        "overtrue/phplint": "^1.2"
+        "friendsofphp/php-cs-fixer": "^2.18"
     },
     "autoload": {
         "psr-4": {
@@ -34,6 +33,7 @@
         "class": "leowebguy\\currencyconverter\\CurrencyConverter"
     },
     "scripts": {
-        "lint": "./vendor/bin/phplint . --verbose --exclude=vendor --no-configuration"
+        "lint": "vendor/bin/php-cs-fixer fix src --dry-run --rules=@Symfony -vvv",
+        "lint-fix": "vendor/bin/php-cs-fixer fix src --rules=@Symfony -vvv"
     }
 }

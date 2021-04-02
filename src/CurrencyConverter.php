@@ -5,19 +5,18 @@
 
 namespace leowebguy\currencyconverter;
 
-use leowebguy\currencyconverter\models\CurrencyConverterModel;
-use leowebguy\currencyconverter\services\CurrencyConverterService;
-use leowebguy\currencyconverter\variables\CurrencyConverterVariable;
-
 use Craft;
 use craft\base\Plugin;
 use craft\web\twig\variables\CraftVariable;
-
+use leowebguy\currencyconverter\models\CurrencyConverterModel;
+use leowebguy\currencyconverter\services\CurrencyConverterService;
+use leowebguy\currencyconverter\variables\CurrencyConverterVariable;
 use yii\base\Event;
 
 /**
- * Class CurrencyConverter
- * @property  CurrencyConverterService $currencyConverterService
+ * Class CurrencyConverter.
+ *
+ * @property CurrencyConverterService $currencyConverterService
  */
 class CurrencyConverter extends Plugin
 {
@@ -42,11 +41,10 @@ class CurrencyConverter extends Plugin
             Craft::t(
                 'currency-converter',
                 '{name} plugin loaded',
-                [ 'name' => $this->name ]
+                ['name' => $this->name]
             ),
             __METHOD__
         );
-
     }
 
     protected function createSettingsModel()
@@ -57,7 +55,7 @@ class CurrencyConverter extends Plugin
     protected function settingsHtml()
     {
         return Craft::$app->getView()->renderTemplate('currency-converter/settings', [
-            'settings' => $this->getSettings()
+            'settings' => $this->getSettings(),
         ]);
     }
 }

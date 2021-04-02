@@ -8,7 +8,7 @@ namespace leowebguy\currencyconverter\models;
 use craft\base\Model;
 
 /**
- * CurrencyConverterModel
+ * CurrencyConverterModel.
  */
 class CurrencyConverterModel extends Model
 {
