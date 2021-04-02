@@ -17,7 +17,7 @@ class CurrencyConverterVariable
      *
      * @param string $from
      * @param string $to
-     * @param float  $amount
+     * @param float $amount
      *
      * @return mixed
      */

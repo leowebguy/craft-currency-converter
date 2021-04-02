@@ -19,16 +19,16 @@ class CurrencyConverterService extends Component
      *
      * @param string $from
      * @param string $to
-     * @param float  $amount
+     * @param float $amount
      *
      * @return mixed
      */
     public function getConversion($from = 'EUR', $to = 'USD', $amount = 1)
     {
-        $key = $from.'_'.$to;
+        $key = $from . '_' . $to;
 
-        $path = Craft::$app->path->getStoragePath().'/currency/';
-        $cache = $path.$key;
+        $path = Craft::$app->path->getStoragePath() . '/currency/';
+        $cache = $path . $key;
 
         if (!is_dir($path)) {
             mkdir($path);
@@ -36,7 +36,7 @@ class CurrencyConverterService extends Component
 
         $settings = Craft::$app->plugins->getPlugin('currency-converter')->getSettings();
 
-        if (file_exists($cache) && filemtime($cache) > time() - (60 * 60 * ((int) $settings['cacheTime']))) {
+        if (file_exists($cache) && filemtime($cache) > time() - (60 * 60 * ((int)$settings['cacheTime']))) {
             return $amount * file_get_contents($cache);
         }
 
