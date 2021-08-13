@@ -7,6 +7,7 @@ namespace leowebguy\currencyconverter\services;
 
 use Craft;
 use craft\base\Component;
+use craft\helpers\FileHelper;
 use GuzzleHttp\Client;
 
 /**
@@ -22,6 +23,7 @@ class CurrencyConverterService extends Component
      * @param float $amount
      *
      * @return mixed
+     * @throws \yii\base\Exception
      */
     public function getConversion($from = 'EUR', $to = 'USD', $amount = 1)
     {
@@ -31,7 +33,7 @@ class CurrencyConverterService extends Component
         $cache = $path . $key;
 
         if (!is_dir($path)) {
-            mkdir($path);
+            FileHelper::createDirectory($path);
         }
 
         $settings = Craft::$app->plugins->getPlugin('currency-converter')->getSettings();
@@ -62,8 +64,8 @@ class CurrencyConverterService extends Component
             file_put_contents($cache, $rate);
 
             return $amount * $rate;
-        } else {
-            return false;
         }
+
+        return false;
     }
 }
