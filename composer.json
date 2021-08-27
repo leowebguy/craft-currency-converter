@@ -26,7 +26,6 @@
         "handle": "currency-converter",
         "hasCpSection": false,
         "hasCpSettings": true,
-        "changelogUrl": "https://raw.githubusercontent.com/leowebguy/craft-currency-converter/master/CHANGELOG.md",
         "components": {
             "currencyConverterService": "leowebguy\\currencyconverter\\services\\CurrencyConverterService"
         },
