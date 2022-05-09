@@ -19,7 +19,7 @@
   "minimum-stability": "dev",
   "prefer-stable": true,
   "require": {
-    "craftcms/cms": "^4.0.0",
+    "craftcms/cms": "^3.0|^4.0",
     "guzzlehttp/guzzle": "^7.2.0"
   },
   "require-dev": {
