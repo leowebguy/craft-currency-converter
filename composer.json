@@ -1,38 +1,60 @@
 {
-    "name": "leowebguy/craft-currency-converter",
-    "description": "Craft 3 plugin that converts currency using API & local storage",
-    "version": "1.0.3",
-    "type": "craft-plugin",
-    "license": "MIT",
-    "authors": [
-        {
-            "name": "Leo",
-            "homepage": "https://github.com/leowebguy"
-        }
-    ],
-    "require": {
-        "guzzlehttp/guzzle": "^7.2.0"
-    },
-    "require-dev": {
-        "friendsofphp/php-cs-fixer": "^2.18"
-    },
-    "autoload": {
-        "psr-4": {
-            "leowebguy\\currencyconverter\\": "src/"
-        }
-    },
-    "extra": {
-        "name": "Currency Converter",
-        "handle": "currency-converter",
-        "hasCpSection": false,
-        "hasCpSettings": true,
-        "components": {
-            "currencyConverterService": "leowebguy\\currencyconverter\\services\\CurrencyConverterService"
-        },
-        "class": "leowebguy\\currencyconverter\\CurrencyConverter"
-    },
-    "scripts": {
-        "lint": "vendor/bin/php-cs-fixer fix src --dry-run --rules=@PSR2 -vvv",
-        "lint-fix": "vendor/bin/php-cs-fixer fix src --rules=@PSR2 -vvv"
+  "name": "leowebguy/craft-currency-converter",
+  "description": "Craft 3 plugin that converts currency using API & local storage",
+  "keywords": [
+    "craftcms",
+    "currency",
+    "convert",
+    "converter"
+  ],
+  "version": "1.0.4",
+  "type": "craft-plugin",
+  "license": "MIT",
+  "authors": [
+    {
+      "name": "Leo",
+      "homepage": "https://github.com/leowebguy"
     }
+  ],
+  "minimum-stability": "dev",
+  "prefer-stable": true,
+  "require": {
+    "craftcms/cms": "^4.0.0",
+    "guzzlehttp/guzzle": "^7.2.0"
+  },
+  "require-dev": {
+    "craftcms/contact-form": "*",
+    "craftcms/ecs": "dev-main",
+    "craftcms/phpstan": "dev-main",
+    "craftcms/rector": "dev-main"
+  },
+  "autoload": {
+    "psr-4": {
+      "leowebguy\\currencyconverter\\": "src/"
+    }
+  },
+  "extra": {
+    "name": "Currency Converter",
+    "handle": "currency-converter",
+    "hasCpSection": false,
+    "hasCpSettings": true,
+    "components": {
+      "currencyConverterService": "leowebguy\\currencyconverter\\services\\CurrencyConverterService"
+    },
+    "class": "leowebguy\\currencyconverter\\CurrencyConverter"
+  },
+  "config": {
+    "platform": {
+      "php": "8.0.2"
+    },
+    "allow-plugins": {
+      "yiisoft/yii2-composer": true,
+      "craftcms/plugin-installer": true
+    }
+  },
+  "scripts": {
+    "check-cs": "ecs check --ansi",
+    "fix-cs": "ecs check --ansi --fix",
+    "phpstan": "phpstan --memory-limit=1G"
+  }
 }
