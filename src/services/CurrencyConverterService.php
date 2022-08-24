@@ -1,12 +1,18 @@
 <?php
-/*
- * Currency Converter | Craft 3 Plugin
+/**
+ * Currency Converter plugin for Craft CMS 3.x
+ *
+ * @author     Leo Leoncio
+ * @see        https://github.com/leowebguy
+ * @copyright  Copyright (c) 2021, leowebguy
+ * @license    MIT
  */
 
 namespace leowebguy\currencyconverter\services;
 
 use Craft;
 use craft\base\Component;
+use craft\helpers\App;
 use craft\helpers\FileHelper;
 
 /**
@@ -51,7 +57,7 @@ class CurrencyConverterService extends Component
                     'amount' => '1',
                 ],
                 'headers' => [
-                    'X-RapidAPI-Key' => $settings['accessKey'],
+                    'X-RapidAPI-Key' => App::parseEnv($settings['accessKey']),
                     'X-RapidAPI-Host' => 'currency-converter5.p.rapidapi.com'
                 ],
             ]);

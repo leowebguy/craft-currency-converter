@@ -1,11 +1,12 @@
 {% import '_includes/forms' as forms %}
 
-{{ forms.textField({
+{{ forms.autosuggestField({
     first: true,
     name: 'accessKey',
     label: "Access Key",
     instructions: "Enter your access key from https://rapidapi.com/natkapral/api/currency-converter5 in this field"|t,
     required: true,
+    suggestEnvVars: true,
     value: settings.accessKey,
     size: 64
 }) }}

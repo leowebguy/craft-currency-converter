@@ -1,6 +1,11 @@
 <?php
-/*
- * Currency Converter | Craft 3 Plugin
+/**
+ * Currency Converter plugin for Craft CMS 3.x
+ *
+ * @author     Leo Leoncio
+ * @see        https://github.com/leowebguy
+ * @copyright  Copyright (c) 2021, leowebguy
+ * @license    MIT
  */
 
 namespace leowebguy\currencyconverter;
@@ -10,14 +15,11 @@ use craft\base\Plugin;
 use craft\base\Model;
 use craft\web\twig\variables\CraftVariable;
 use leowebguy\currencyconverter\models\CurrencyConverterModel;
-use leowebguy\currencyconverter\services\CurrencyConverterService;
 use leowebguy\currencyconverter\variables\CurrencyConverterVariable;
 use yii\base\Event;
 
 /**
- * Class CurrencyConverter.
- *
- * @property CurrencyConverterService $currencyConverterService
+ * Class CurrencyConverter
  */
 class CurrencyConverter extends Plugin
 {

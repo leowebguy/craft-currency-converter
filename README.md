@@ -1,6 +1,6 @@
 # Currency Converter plugin for Craft 3
 
-Craft 3 plugin that converts currency using API & local storage 
+Craft 3 plugin that converts currency using API & local storage
 
 ![icon](resources/icon.svg)
 
@@ -26,7 +26,13 @@ In the Control Panel, go to Settings → Plugins and click the “Install” but
 
 Go to [rapidapi.com/natkapral/api/currency-converter5](https://rapidapi.com/natkapral/api/currency-converter5/) → Get your Free API Key
 
-In the Control Panel, go to Settings → Currency Converter and save your API Key
+In the Control Panel, go to Settings → Currency Converter → Paste and Save your API Key
+
+You can also put it in your ENV file i.e. `$CC_KEY` and set it over here.
+
+```dotenv
+CC_KEY=aaa123bbb234
+```
 
 ![screenshot1](resources/screenshot1.jpg)
 
