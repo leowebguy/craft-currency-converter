@@ -2,9 +2,23 @@
 
 Craft 3 plugin that converts currency using API & local storage 
 
-![icon](resources/icon.svg)
+### IMPORTANT
 
-&nbsp;
+_Craft 3_
+
+```json
+"require": {
+   "leowebguy/craft-currency-converter": "1.0.3",
+}
+```
+
+_Craft 4_
+
+```json
+"require": {
+   "leowebguy/craft-currency-converter": "^1.0.4",
+}
+```
 
 ---
 
