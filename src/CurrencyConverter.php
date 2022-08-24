@@ -39,11 +39,7 @@ class CurrencyConverter extends Plugin
         );
 
         Craft::info(
-            Craft::t(
-                'currency-converter',
-                '{name} plugin loaded',
-                ['name' => $this->name]
-            ),
+            'Currency Converter plugin loaded',
             __METHOD__
         );
     }

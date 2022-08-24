@@ -1,9 +1,27 @@
 /vendor
-composer.lock
+/composer.lock
 /node_modules
-package-lock.json
+/package-lock.json
 
+# thumbnails
+._*
+
+# misc
+.sass-cache
+.cache
+.php_cs.cache
+ecs.php
+.DS_Store
+.project
+.settings
+*.esproj
+*.sublime-workspace
+*.sublime-project
+*.tmproj
+*.tmproject
+config.codekit3
+prepros-6.config
+
+# ide
 .idea
 .vscode
-.DS_Store
-.php_cs.cache
