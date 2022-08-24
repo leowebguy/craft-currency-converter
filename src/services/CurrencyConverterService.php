@@ -8,7 +8,6 @@ namespace leowebguy\currencyconverter\services;
 use Craft;
 use craft\base\Component;
 use craft\helpers\FileHelper;
-use GuzzleHttp\Client;
 
 /**
  * CurrencyConverterService.
@@ -38,30 +37,34 @@ class CurrencyConverterService extends Component
 
         $settings = Craft::$app->plugins->getPlugin('currency-converter')->getSettings();
 
-        if (file_exists($cache) && filemtime($cache) > time() - (60 * 60 * ((int)$settings['cacheTime']))) {
-            return $amount * file_get_contents($cache);
+        if (@file_exists($cache) && @filemtime($cache) > time() - (60 * 60 * ((int)$settings['cacheTime']))) {
+            return $amount * @file_get_contents($cache);
         }
 
-        $client = new Client();
+        try {
+            $client = Craft::createGuzzleClient();
+            $response = $client->get('https://currency-converter5.p.rapidapi.com/currency/convert', [
+                'query' => [
+                    'format' => 'json',
+                    'from' => $from,
+                    'to' => $to,
+                    'amount' => '1',
+                ],
+                'headers' => [
+                    'X-RapidAPI-Key' => $settings['accessKey'],
+                    'X-RapidAPI-Host' => 'currency-converter5.p.rapidapi.com'
+                ],
+            ]);
+        } catch (\Exception $e) {
+            Craft::error('RapidAPI Guzzle Client Error', __METHOD__);
+            return 'RapidAPI Error';
+        }
 
-        $response = $client->request('GET', 'https://currency-converter5.p.rapidapi.com/currency/convert', [
-            'query' => [
-                'format' => 'json',
-                'from' => $from,
-                'to' => $to,
-                'amount' => '1',
-            ],
-            'headers' => [
-                'x-rapidapi-host' => 'currency-converter5.p.rapidapi.com',
-                'x-rapidapi-key' => $settings['accessKey'],
-            ],
-        ]);
+        $r = @json_decode(trim($response->getBody()->getContents()));
 
-        $responseBody = json_decode(trim($response->getBody()));
-
-        if ('success' == $responseBody->status) {
-            $rate = $responseBody->rates->$to->rate;
-            file_put_contents($cache, $rate);
+        if ('success' == $r->status) {
+            $rate = $r->rates->$to->rate;
+            @file_put_contents($cache, $rate);
 
             return $amount * $rate;
         }

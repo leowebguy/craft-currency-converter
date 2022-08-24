@@ -7,6 +7,7 @@ namespace leowebguy\currencyconverter;
 
 use Craft;
 use craft\base\Plugin;
+use craft\base\Model;
 use craft\web\twig\variables\CraftVariable;
 use leowebguy\currencyconverter\models\CurrencyConverterModel;
 use leowebguy\currencyconverter\services\CurrencyConverterService;
@@ -47,7 +48,7 @@ class CurrencyConverter extends Plugin
         );
     }
 
-    protected function createSettingsModel(): ?\craft\base\Model
+    protected function createSettingsModel(): ?Model
     {
         return new CurrencyConverterModel();
     }
