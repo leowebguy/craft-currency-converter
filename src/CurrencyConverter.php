@@ -23,13 +23,24 @@ use yii\base\Event;
  */
 class CurrencyConverter extends Plugin
 {
+    // Properties
+    // =========================================================================
+
     public static $plugin;
+
+    // Public Methods
+    // =========================================================================
 
     public function init()
     {
         parent::init();
         self::$plugin = $this;
 
+        if (!$this->isInstalled) {
+            return;
+        }
+
+        // craft var
         Event::on(
             CraftVariable::class,
             CraftVariable::EVENT_INIT,
@@ -40,11 +51,15 @@ class CurrencyConverter extends Plugin
             }
         );
 
+        // log info
         Craft::info(
             'Currency Converter plugin loaded',
             __METHOD__
         );
     }
+
+    // Protected Methods
+    // =========================================================================
 
     protected function createSettingsModel(): ?Model
     {

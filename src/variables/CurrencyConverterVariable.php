@@ -7,6 +7,7 @@
  * @copyright  Copyright (c) 2021, leowebguy
  * @license    MIT
  */
+
 namespace leowebguy\currencyconverter\variables;
 
 use leowebguy\currencyconverter\CurrencyConverter;

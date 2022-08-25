@@ -1,6 +1,6 @@
 {
   "name": "leowebguy/craft-currency-converter",
-  "description": "Craft 3 plugin that converts currency using API & local storage",
+  "description": "Craft plugin to convert currency using API & local storage",
   "keywords": [
     "craftcms",
     "currency",
