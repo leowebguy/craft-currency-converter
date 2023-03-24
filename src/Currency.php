@@ -1,10 +1,10 @@
 <?php
 /**
- * Currency Converter plugin for Craft CMS 3.x
+ * Currency Converter plugin for Craft CMS
  *
  * @author     Leo Leoncio
  * @see        https://github.com/leowebguy
- * @copyright  Copyright (c) 2021, leowebguy
+ * @copyright  Copyright (c) 2023, leowebguy
  * @license    MIT
  */
 
@@ -14,19 +14,25 @@ use Craft;
 use craft\base\Plugin;
 use craft\base\Model;
 use craft\web\twig\variables\CraftVariable;
-use leowebguy\currencyconverter\models\CurrencyConverterModel;
-use leowebguy\currencyconverter\variables\CurrencyConverterVariable;
+use leowebguy\currencyconverter\models\CurrencyModel;
+use leowebguy\currencyconverter\services\CurrencyService;
+use leowebguy\currencyconverter\variables\CurrencyVariable;
+use Twig\Error\LoaderError;
+use Twig\Error\RuntimeError;
+use Twig\Error\SyntaxError;
 use yii\base\Event;
+use yii\base\Exception;
 
-/**
- * Class CurrencyConverter
- */
-class CurrencyConverter extends Plugin
+class Currency extends Plugin
 {
     // Properties
     // =========================================================================
 
     public static $plugin;
+
+    public bool $hasCpSection = false;
+
+    public bool $hasCpSettings = true;
 
     // Public Methods
     // =========================================================================
@@ -40,18 +46,20 @@ class CurrencyConverter extends Plugin
             return;
         }
 
-        // craft var
+        $this->setComponents([
+            'currencyService' => CurrencyService::class
+        ]);
+
         Event::on(
             CraftVariable::class,
             CraftVariable::EVENT_INIT,
             function(Event $event) {
                 /** @var CraftVariable $variable */
                 $variable = $event->sender;
-                $variable->set('currency', CurrencyConverterVariable::class);
+                $variable->set('currency', CurrencyVariable::class);
             }
         );
 
-        // log info
         Craft::info(
             'Currency Converter plugin loaded',
             __METHOD__
@@ -61,11 +69,20 @@ class CurrencyConverter extends Plugin
     // Protected Methods
     // =========================================================================
 
+    /**
+     * @return Model|null
+     */
     protected function createSettingsModel(): ?Model
     {
-        return new CurrencyConverterModel();
+        return new CurrencyModel();
     }
 
+    /**
+     * @throws SyntaxError
+     * @throws Exception
+     * @throws RuntimeError
+     * @throws LoaderError
+     */
     protected function settingsHtml(): ?string
     {
         return Craft::$app->getView()->renderTemplate('currency-converter/settings', [

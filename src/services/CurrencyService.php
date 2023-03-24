@@ -1,10 +1,10 @@
 <?php
 /**
- * Currency Converter plugin for Craft CMS 3.x
+ * Currency Converter plugin for Craft CMS
  *
  * @author     Leo Leoncio
  * @see        https://github.com/leowebguy
- * @copyright  Copyright (c) 2021, leowebguy
+ * @copyright  Copyright (c) 2023, leowebguy
  * @license    MIT
  */
 
@@ -14,28 +14,23 @@ use Craft;
 use craft\base\Component;
 use craft\helpers\App;
 use craft\helpers\FileHelper;
+use GuzzleHttp\Exception\GuzzleException;
+use yii\base\Exception;
 
-/**
- * CurrencyConverterService.
- */
-class CurrencyConverterService extends Component
+class CurrencyService extends Component
 {
     /**
-     * getConversion.
-     *
      * @param string $from
      * @param string $to
-     * @param float $amount
-     *
+     * @param int $amount
      * @return mixed
-     * @throws \yii\base\Exception
+     * @throws GuzzleException
+     * @throws Exception
      */
-    public function getConversion($from = 'EUR', $to = 'USD', $amount = 1)
+    public function getConversion(string $from = 'EUR', string $to = 'USD', int $amount = 1): mixed
     {
-        $key = $from . '_' . $to;
-
         $path = Craft::$app->path->getStoragePath() . '/currency/';
-        $cache = $path . $key;
+        $cache = $path . $from . '_' . $to;
 
         if (!is_dir($path)) {
             FileHelper::createDirectory($path);
@@ -62,19 +57,21 @@ class CurrencyConverterService extends Component
                 ],
             ]);
         } catch (\Exception $e) {
-            Craft::error('RapidAPI Guzzle Client Error', __METHOD__);
-            return 'RapidAPI Error';
+            Craft::error('RapidAPI Error | ' . $e->getMessage(), __METHOD__);
+            Craft::$app->getErrorHandler()->logException($e);
+
+            return 'RapidAPI Error #1';
         }
 
         $r = @json_decode(trim($response->getBody()->getContents()));
 
-        if ('success' == $r->status) {
+        if ($r->status == 'success') {
             $rate = $r->rates->$to->rate;
             @file_put_contents($cache, $rate);
 
             return $amount * $rate;
         }
 
-        return false;
+        return 'RapidAPI Error #2';
     }
 }

@@ -7,7 +7,7 @@
     "convert",
     "converter"
   ],
-  "version": "1.0.6",
+  "version": "1.0.7",
   "type": "craft-plugin",
   "license": "MIT",
   "authors": [
@@ -19,6 +19,7 @@
   "minimum-stability": "dev",
   "prefer-stable": true,
   "require": {
+    "php": "^7.2.5|^8.0",
     "craftcms/cms": "^3.0|^4.0"
   },
   "require-dev": {
@@ -34,12 +35,7 @@
   "extra": {
     "name": "Currency Converter",
     "handle": "currency-converter",
-    "hasCpSection": false,
-    "hasCpSettings": true,
-    "class": "leowebguy\\currencyconverter\\CurrencyConverter",
-    "components": {
-      "currencyConverterService": "leowebguy\\currencyconverter\\services\\CurrencyConverterService"
-    }
+    "class": "leowebguy\\currencyconverter\\Currency"
   },
   "config": {
     "platform": {
@@ -53,6 +49,7 @@
   "scripts": {
     "check-cs": "vendor/bin/ecs check src --ansi",
     "fix-cs": "vendor/bin/ecs check src --ansi --fix",
-    "phpstan": "vendor/bin/phpstan analyse src"
+    "phpstan": "vendor/bin/phpstan analyse src",
+    "rector": "vendor/bin/rector process src --config vendor/craftcms/rector/sets/craft-cms-40.php"
   }
 }
