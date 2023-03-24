@@ -1,4 +1,4 @@
-# Currency Converter plugin for Craft
+# Currency Converter
 
 Craft plugin to convert currency using API & local storage
 
