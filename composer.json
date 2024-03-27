@@ -7,7 +7,7 @@
     "convert",
     "converter"
   ],
-  "version": "1.0.7",
+  "version": "2.0.0",
   "type": "craft-plugin",
   "license": "MIT",
   "authors": [
@@ -19,13 +19,14 @@
   "minimum-stability": "dev",
   "prefer-stable": true,
   "require": {
-    "php": "^8.0.2",
-    "craftcms/cms": "^4.0"
+    "php": "^8.2",
+    "craftcms/cms": "^5.0"
   },
   "require-dev": {
     "craftcms/ecs": "dev-main",
     "craftcms/phpstan": "dev-main",
-    "craftcms/rector": "dev-main"
+    "craftcms/rector": "dev-main",
+    "laravel/pint": "^1.14.0"
   },
   "autoload": {
     "psr-4": {
@@ -39,7 +40,7 @@
   },
   "config": {
     "platform": {
-      "php": "8.0.2"
+      "php": "8.2"
     },
     "allow-plugins": {
       "yiisoft/yii2-composer": true,
@@ -50,6 +51,7 @@
     "check-cs": "vendor/bin/ecs check src --ansi",
     "fix-cs": "vendor/bin/ecs check src --ansi --fix",
     "phpstan": "vendor/bin/phpstan analyse src",
-    "rector": "vendor/bin/rector process src --config vendor/craftcms/rector/sets/craft-cms-40.php"
+    "rector": "vendor/bin/rector process src --config vendor/craftcms/rector/sets/craft-cms-50.php",
+    "pint": "vendor/bin/pint -v src"
   }
 }

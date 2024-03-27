@@ -4,8 +4,7 @@
  *
  * @author     Leo Leoncio
  * @see        https://github.com/leowebguy
- * @copyright  Copyright (c) 2023, leowebguy
- * @license    MIT
+ * @copyright  Copyright (c) 2024, leowebguy
  */
 
 namespace leowebguy\currencyconverter\variables;
@@ -22,6 +21,6 @@ class CurrencyVariable
      */
     public function conversion(string $from = 'EUR', string $to = 'USD', float|int $amount = 1): mixed
     {
-        return Currency::$plugin->currencyService->getConversion($from, $to, $amount);
+        return Currency::getInstance()->currencyService->getConversion($from, $to, $amount);
     }
 }

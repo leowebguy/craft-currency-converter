@@ -4,15 +4,14 @@
  *
  * @author     Leo Leoncio
  * @see        https://github.com/leowebguy
- * @copyright  Copyright (c) 2023, leowebguy
- * @license    MIT
+ * @copyright  Copyright (c) 2024, leowebguy
  */
 
 namespace leowebguy\currencyconverter;
 
 use Craft;
-use craft\base\Plugin;
 use craft\base\Model;
+use craft\base\Plugin;
 use craft\web\twig\variables\CraftVariable;
 use leowebguy\currencyconverter\models\CurrencyModel;
 use leowebguy\currencyconverter\services\CurrencyService;
@@ -25,22 +24,13 @@ use yii\base\Exception;
 
 class Currency extends Plugin
 {
-    // Properties
-    // =========================================================================
-
-    public static $plugin;
-
     public bool $hasCpSection = false;
 
     public bool $hasCpSettings = true;
 
-    // Public Methods
-    // =========================================================================
-
-    public function init()
+    public function init(): void
     {
         parent::init();
-        self::$plugin = $this;
 
         if (!$this->isInstalled) {
             return;
@@ -66,15 +56,12 @@ class Currency extends Plugin
         );
     }
 
-    // Protected Methods
-    // =========================================================================
-
     /**
      * @return Model|null
      */
     protected function createSettingsModel(): ?Model
     {
-        return new CurrencyModel();
+        return new CurrencyModel;
     }
 
     /**

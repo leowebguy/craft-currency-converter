@@ -4,8 +4,7 @@
  *
  * @author     Leo Leoncio
  * @see        https://github.com/leowebguy
- * @copyright  Copyright (c) 2023, leowebguy
- * @license    MIT
+ * @copyright  Copyright (c) 2024, leowebguy
  */
 
 namespace leowebguy\currencyconverter\services;
@@ -23,9 +22,9 @@ class CurrencyService extends Component
      * @param string $from
      * @param string $to
      * @param int $amount
-     * @return mixed
      * @throws GuzzleException
      * @throws Exception
+     * @return mixed
      */
     public function getConversion(string $from = 'EUR', string $to = 'USD', int $amount = 1): mixed
     {

@@ -4,8 +4,7 @@
  *
  * @author     Leo Leoncio
  * @see        https://github.com/leowebguy
- * @copyright  Copyright (c) 2023, leowebguy
- * @license    MIT
+ * @copyright  Copyright (c) 2024, leowebguy
  */
 
 namespace leowebguy\currencyconverter\models;
