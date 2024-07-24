@@ -13,6 +13,7 @@ use Craft;
 use craft\base\Component;
 use craft\helpers\App;
 use craft\helpers\FileHelper;
+use craft\helpers\Json;
 use GuzzleHttp\Exception\GuzzleException;
 use yii\base\Exception;
 
@@ -22,9 +23,9 @@ class CurrencyService extends Component
      * @param string $from
      * @param string $to
      * @param int $amount
-     * @throws GuzzleException
-     * @throws Exception
      * @return mixed
+     * @throws Exception
+     * @throws GuzzleException
      */
     public function getConversion(string $from = 'EUR', string $to = 'USD', int $amount = 1): mixed
     {
@@ -62,7 +63,7 @@ class CurrencyService extends Component
             return 'RapidAPI Error #1';
         }
 
-        $r = @json_decode(trim($response->getBody()->getContents()));
+        $r = Json::decodeIfJson(trim($response->getBody()->getContents()), true);
 
         if ($r->status == 'success') {
             $rate = $r->rates->$to->rate;
