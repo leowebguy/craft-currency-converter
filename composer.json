@@ -7,15 +7,13 @@
     "convert",
     "converter"
   ],
-  "version": "2.0.1",
+  "version": "2.0.2",
   "type": "craft-plugin",
-  "license": "MIT",
-  "authors": [
-    {
-      "name": "Leo",
-      "homepage": "https://github.com/leowebguy"
-    }
-  ],
+  "license": "proprietary",
+  "author": {
+    "name": "Leo",
+    "homepage": "https://github.com/leowebguy"
+  },
   "minimum-stability": "dev",
   "prefer-stable": true,
   "require": {
